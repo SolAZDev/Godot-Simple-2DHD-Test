@@ -154,6 +154,7 @@ transform = Transform( 1.00296, 0, 0, 0, 1.00296, 0, 0, 0, 1.00296, 0, 0.264385,
 
 [node name="Label3D" parent="Level/WelcomeSign" index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00223613, 0.268026, 0.0396719 )
+cast_shadow = 0
 
 [node name="Pine" parent="Level" instance=ExtResource( 14 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.96275, 0, 4.31714 )
