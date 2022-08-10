@@ -1,0 +1,170 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://NodePrefabs/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://NightTime.tres" type="Environment" id=2]
+[ext_resource path="res://Scripts/PathCam.cs" type="Script" id=3]
+[ext_resource path="res://NodePrefabs/DollyFollow.tscn" type="PackedScene" id=4]
+[ext_resource path="res://NodePrefabs/SimpleLamp.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Resources/Models/Graveyard Kit/foliage.material" type="Material" id=6]
+[ext_resource path="res://Resources/Models/Graveyard Kit/gold.material" type="Material" id=7]
+[ext_resource path="res://Resources/Models/Graveyard Kit/stoneDark.material" type="Material" id=8]
+[ext_resource path="res://Resources/Models/Graveyard Kit/brick.material" type="Material" id=9]
+[ext_resource path="res://NodePrefabs/Bench.tscn" type="PackedScene" id=10]
+[ext_resource path="res://NodePrefabs/GraveStone.tscn" type="PackedScene" id=11]
+[ext_resource path="res://NodePrefabs/Coffin.tscn" type="PackedScene" id=12]
+[ext_resource path="res://NodePrefabs/WelcomeSign.tscn" type="PackedScene" id=13]
+[ext_resource path="res://NodePrefabs/Pine.tscn" type="PackedScene" id=14]
+
+[sub_resource type="Curve3D" id=3]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, -0.220653, 0.436508, 17.3473, -0.0358295, -0.119484, 0.654415, 0.0358295, 0.119484, -0.654415, -0.255447, 0.446679, 6.71931, -0.151819, 0.0342164, 2.17305, 0.151819, -0.0342164, -2.17305, 0.989591, 0.494975, 2.25552, 0.0207052, -0.00318909, 2.1947, -0.0207052, 0.00318909, -2.1947, -0.886829, 0.948251, -2.25406, -0.566608, -0.196279, 0.60677, 0, 0, 0, -0.546261, 0.632117, -5.64107, 0, 0, 0, 0, 0, 0, -0.167086, 0.0547422, -8.07785, 0, 0, 0, 0, 0, 0, -0.176348, 0.0547403, -13.1219 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0 )
+}
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.999995, -0.000290555, 0.00319793, 0.000290695, 1, -4.2965e-05, -0.00319792, 4.38997e-05, 0.999995, -0.154837, 0.233035, 14.0965 )
+
+[node name="Spatial" type="Spatial" parent="Player"]
+transform = Transform( 1, 8.93863e-12, -3.95812e-09, -3.09797e-12, 1, 0, 3.95812e-09, 6.18456e-11, 1, -0.0167102, 0.450908, 2.67684 )
+
+[node name="Floor" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0236697, 0.0137112, 0.0453119 )
+width = 5.0
+height = 0.001
+depth = 34.7264
+material = ExtResource( 6 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 2 )
+
+[node name="Path" type="Path" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.109542, 0.307503, 0.0112621 )
+curve = SubResource( 3 )
+script = ExtResource( 3 )
+__meta__ = {
+"_editor_description_": ""
+}
+FollowTarget = NodePath("../Player/Spatial")
+LookTarget = NodePath("../Player")
+PosSpeed = 2.0
+
+[node name="DollyFollow" parent="Path" instance=ExtResource( 4 )]
+unique_name_in_owner = true
+transform = Transform( 0.830459, -0.27158, 0.486397, -0.173769, 0.703269, 0.68936, -0.529283, -0.657005, 0.536845, -0.220653, 0.436508, 17.3473 )
+
+[node name="Level" type="Spatial" parent="."]
+
+[node name="Bench" parent="Level" instance=ExtResource( 10 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.28507, 0.00806475, 6.50497 )
+
+[node name="Bench2" parent="Level" instance=ExtResource( 10 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.28507, 0.00806475, 5.50497 )
+
+[node name="Collissions" type="Spatial" parent="Level"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.257858, 0 )
+
+[node name="CSGBox3" type="CSGBox" parent="Level/Collissions"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44565, 0.725873, 2.14542 )
+use_collision = true
+material = ExtResource( 7 )
+
+[node name="CSGBox5" type="CSGBox" parent="Level/Collissions"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.68082, 0.725873, 12.0553 )
+use_collision = true
+height = 3.34469
+depth = 8.64924
+material = ExtResource( 8 )
+
+[node name="CSGBox" type="CSGBox" parent="Level/Collissions"]
+transform = Transform( 1, 0, 0, 0, 3.8694, 0, 0, 0, 15, -3.41488, 3.39143, 2.13636 )
+use_collision = true
+material = ExtResource( 8 )
+
+[node name="CSGBox2" type="CSGBox" parent="Level/Collissions"]
+transform = Transform( 1, 0, 0, 0, 3.8694, 0, 0, 0, 15, 3.46841, 3.37921, 2.14542 )
+use_collision = true
+material = ExtResource( 8 )
+
+[node name="CSGBox4" type="CSGBox" parent="Level/Collissions"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.50261, 1.28609, -3.39566 )
+use_collision = true
+height = 3.10759
+depth = 4.47798
+material = ExtResource( 9 )
+
+[node name="Lights" type="Spatial" parent="Level"]
+
+[node name="Lamp" parent="Level/Lights" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.14124, 0, 15.4212 )
+
+[node name="Lamp6" parent="Level/Lights" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.11728, 0.00674224, 10.6067 )
+
+[node name="Lamp4" parent="Level/Lights" instance=ExtResource( 5 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 2.25569, 0, 7.26294 )
+
+[node name="Lamp7" parent="Level/Lights" instance=ExtResource( 5 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 2.25569, 0, 2.5496 )
+
+[node name="Lamp5" parent="Level/Lights" instance=ExtResource( 5 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 2.25569, 0, -9.96597 )
+
+[node name="Lamp2" parent="Level/Lights" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.14124, 0, -1.58467 )
+
+[node name="Lamp8" parent="Level/Lights" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.14124, 0, -5.89601 )
+
+[node name="Lamp3" parent="Level/Lights" instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.14124, 0, -16.7809 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="Level/Lights"]
+transform = Transform( 0.965926, -0.0669873, -0.25, 0, -0.965926, 0.258819, -0.258819, -0.25, -0.933013, 0, 3.34433, 0 )
+light_color = Color( 0.1404, 0.24024, 0.39, 1 )
+shadow_enabled = true
+
+[node name="GraveStone" parent="Level" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.847917, -2.38419e-07, -0.901073 )
+
+[node name="GraveStone3" parent="Level" instance=ExtResource( 11 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.501774, -2.38419e-07, 8.0796 )
+
+[node name="Coffin" parent="Level" instance=ExtResource( 12 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.88329, 0, 1.99914 )
+
+[node name="Coffin2" parent="Level" instance=ExtResource( 12 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.88329, 0, 0.999138 )
+
+[node name="Coffin3" parent="Level" instance=ExtResource( 12 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.88329, 0, 2.99914 )
+
+[node name="Coffin4" parent="Level" instance=ExtResource( 12 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.88329, 0, 3.99914 )
+
+[node name="Bench3" parent="Level" instance=ExtResource( 10 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.01569, 5.96046e-08, -0.150612 )
+
+[node name="WelcomeSign" parent="Level" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.860772, -0.00582862, 3.24062 )
+
+[node name="CollisionShape" parent="Level/WelcomeSign" index="1"]
+transform = Transform( 1.00296, 0, 0, 0, 1.00296, 0, 0, 0, 1.00296, 0, 0.264385, 0 )
+
+[node name="Label3D" parent="Level/WelcomeSign" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00223613, 0.268026, 0.0396719 )
+
+[node name="Pine" parent="Level" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.96275, 0, 4.31714 )
+
+[node name="Pine2" parent="Level" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.748504, 0, 0.622891 )
+
+[node name="Pine3" parent="Level" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.87976, -0.001863, -6.33087 )
+
+[node name="Pine4" parent="Level" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.87976, -0.001863, -7.31386 )
+
+[editable path="Level/WelcomeSign"]

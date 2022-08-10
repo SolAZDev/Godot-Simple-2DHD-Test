@@ -1,0 +1,19 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HD2DTest", "HD2DTest.csproj", "{D93FD425-9915-4241-A272-3DE52BE4B3DC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D93FD425-9915-4241-A272-3DE52BE4B3DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D93FD425-9915-4241-A272-3DE52BE4B3DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D93FD425-9915-4241-A272-3DE52BE4B3DC}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{D93FD425-9915-4241-A272-3DE52BE4B3DC}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{D93FD425-9915-4241-A272-3DE52BE4B3DC}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{D93FD425-9915-4241-A272-3DE52BE4B3DC}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+	EndGlobalSection
+EndGlobal

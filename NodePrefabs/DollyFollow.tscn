@@ -1,0 +1,7 @@
+[gd_scene format=2]
+
+[node name="DollyFollow" type="PathFollow"]
+transform = Transform( 0.830459, -0.27158, 0.486397, -0.173769, 0.703269, 0.68936, -0.529283, -0.657005, 0.536845, 0, 1.5977, 0.766089 )
+
+[node name="FollowCam" type="ClippedCamera" parent="."]
+unique_name_in_owner = true
